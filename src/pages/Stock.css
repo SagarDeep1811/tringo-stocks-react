@@ -1,0 +1,126 @@
+h1 {
+    color: black;
+    text-align: center;
+    font-family: courier new;
+    color: white;
+  }
+  
+  #currency {
+    border: none;
+    border-top: #6ab187 solid 5px;
+    width: 150px;
+    height: 50px;
+    border-radius: 7px;
+  }
+  
+  /* .styled-select option{} */
+  
+  #currency:hover {
+    border-top: #488a99 solid 5px;
+  }
+  
+  input[type="text"] {
+    height: 50px;
+    width: 150px;
+    box-sizing: border-box;
+    border: none;
+    border-top: 5px solid #6ab187;
+    border-radius: 7px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.8;
+  }
+  
+  input[type="text"]:hover {
+    border-top: 5px solid #488a99;
+    opacity: 1;
+  }
+  
+  input[type="text"]::placeholder {
+    color: black;
+    opacity: 1;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 200;
+  }
+  
+  input:focus::placeholder {
+    color: transparent;
+  }
+  
+  button {
+    color: white;
+    display: block;
+    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
+    width: 150px;
+    height: 50px;
+    border-radius: 7px;
+    border: none;
+    background-color: #6ab187;
+    cursor: pointer;
+    /* font-family: courier new; */
+    font-size: 20px;
+  }
+  
+  button:hover {
+    background-color: #488a99;
+    /* font-weight: bold; */
+  }
+  
+  .section1 {
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .section2 {
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .section3 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  /* section{
+  margin-top : 5px;  
+  } */
+  
+  body {
+    background-color: #dadada;
+    border-radius: 7%;
+  }
+  
+  .div0 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  
+  .div1 {
+    grid-column: 1 / 5;
+    grid-row: 1;
+  
+    background-color: #488a99;
+    border-radius: 7px;
+  }
+  
+  .div2 {
+    grid-column: 4 / 5;
+    grid-row: 2 / 20;
+    background-color: lightblue;
+    border-radius: 7px;
+  }
+  
+  .div3 {
+    grid-column: 1/4;
+    grid-row: 2 / 56;
+    background-color: lightblue;
+    border-radius: 7px;
+    color: black;
+  }
