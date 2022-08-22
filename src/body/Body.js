@@ -7,45 +7,42 @@ import StockContextProvider from "../context/StockContext";
 function Body() {
   return (
     <StockContextProvider>
-    <BodyContainer>
-      <NewsFeedContainer>
-        <NewsFeed />
-      </NewsFeedContainer>
-      <StatsContainer>
-        <Stats />
-      </StatsContainer>
+      <BodyContainer>
+        <NewsFeedContainer>
+          <NewsFeed />
+        </NewsFeedContainer>
+        <StatsContainer>
+          <Stats />
+        </StatsContainer>
       </BodyContainer>
-      </StockContextProvider>
+    </StockContextProvider>
   );
 }
 
 export default Body;
 
 const BodyContainer = styled.div`
-  /* position:absolute; */
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  margin-top: 55px;
-  height: 100%;
-
-  /* @media only screen and (max-width: 900px) {
-    position:absolute;
+position:absolute;
+display:flex;
+flex-direction:row;
+align-items: start;
+justify-content:flex-start;
+gap:10px;
+width:100%;
+margin-top:5px;
+  @media only screen and (max-width: 700px) {
     display:flex;
-    gap:2px;
-    width:100%;
-    margin-top:50px;
-    flex-direction:column;
-    height:100%;
-    } */
+    flex-flow:column-reverse;
+    justify-content:center;
+    align-items:center;
+    /* gap:1vh; */
+  }
 `;
 
 const NewsFeedContainer = styled.div`
   flex: 0.69;
   /* border:1px solid var(--cool-cyan-shade); */
-  height: 530px;
+  height: 500px;
   flex-direction: row;
   justify-content: center;
   align-items: center;
@@ -54,7 +51,7 @@ const NewsFeedContainer = styled.div`
 const StatsContainer = styled.div`
   flex: 0.3;
   /* border:1px solid var(--cool-cyan-shade); */
-  height: 530px;
+  height: 500px;
   overflow: hidden;
   overflow-y: auto;
   flex-direction: row;

@@ -54,12 +54,24 @@ function Stats() {
   const BASE_URL = process.env.REACT_APP_FINNHUB_QUOTE_URL;
 
 // API call--
-  
+  const [displayState, setDisplayState] = useState("flex");
 const [stocksData, setStocksData] = useState([]);
 const [myStocks, setMyStocks] = useState([]);
 const [newStockSymbol, setNewStockSymbol] = useState("");
 const [sharesForNewStock, setSharesForNewStock] = useState("");
 const usersCollectionRef = collection(db, "myStocks");
+  
+  const handleDisplayAttribute = () => {
+    if (displayState == "flex")
+    {
+      setDisplayState("none");
+    }
+    else
+    {
+      setDisplayState("flex"); 
+    }
+    console.log("displayState : " , displayState);
+  }
   
 const getStocksData = (stock)=>{
   return axios
@@ -168,17 +180,18 @@ const getMyStocks = () => {
       <div className="stats__container">
         <div className="stats__header">
           <p>My Stocks</p>
-          <IconButton onClick={()=>console.log("MUI button clicked")} style={{color:"white"}}>
+          <IconButton onClick={() =>
+              handleDisplayAttribute()} style={{ color: "white" }}>
           <AddOutlinedIcon />
       </IconButton>
         </div>
-        <div className="stats__buyShares__modal" >
-            <input type="text" value={newStockSymbol} style={{borderRadius:"0"}} id="stockSymbol" placeholder='Stock Symbol' onChange={handleNewStockSymbol} />
-          
+
+        <StatsBuySharesContainer className="stats__buyShares__modal" displayAttribute={displayState}>
+          <input type="text" value={newStockSymbol} style={{borderRadius:"0"}} id="stockSymbol" placeholder='Stock Symbol' onChange={handleNewStockSymbol} />
           <input type="text" value={sharesForNewStock} style={{borderRadius:"0"}} id="shares" placeholder='Shares' onChange={handleSharesForNewStock}/>
-          
           <button onClick={addStocks} style={{borderRadius:"0", backgroundColor:"",padding:"0"}}>Buy</button>
-        </div>
+        </StatsBuySharesContainer>
+
         <div className="stats__content">
           <div className="stats__rows">
             {myStocks.map((stock) => (
@@ -211,4 +224,17 @@ background-color:var(--stats-background-color);
 width:100%;
 `;
 
-const ChartsContainer = styled.div``;
+const StatsBuySharesContainer = styled.div`
+  display: ${(props)=>props.displayAttribute};
+  flex-direction:column;
+  font-size: 16px;
+  align-items: center;
+  justify-content: center;
+  gap:15px;
+  border-bottom: 1px solid #768289;
+  padding: 10px 20px 10px 20px;
+  font-weight: 500;
+  color: white;
+  background-color: var(--shallow-black);
+/* display:none; */
+`;

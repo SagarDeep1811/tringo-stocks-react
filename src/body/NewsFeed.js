@@ -37,20 +37,20 @@ const NewsFeedContainer = styled.div`
 color:white;
 display:flex;
 flex-direction:column;
-/* flex:1; */
 align-items:center;
 justify-content:center;
 padding:0;
-background-color: #42494D;
+background-color: black;
 height:100%;
-border-radius:5px;
-border: 1px solid #42494D;
+/* border-radius:5px; */
+position:absolute;
+/* border: 1px solid #42494D; */
 `;
 
 const NewsFeedPortfolio = styled.div`
 display:flex;
 flex-direction:row;
-margin-left:10px;
+/* margin-left:10px; */
 align-items:center;
 justify-content:flex-start;
 gap:20px;
@@ -64,8 +64,9 @@ gap:20px;
 >p{
     color:var( --newsFeed-chart-color);
 }
-
 `;
 
 
-const NewsFeedChart = styled.div``;
+const NewsFeedChart = styled.div`
+
+`;

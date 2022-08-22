@@ -34,23 +34,26 @@ function App() {
         <Header/>
         
       <Routes>
-        <Route path="/home" element={<Home/>}>
-        </Route>
-        <Route path="/profile" element={<Profile/>}>
-        </Route>
-        <Route path="/account" element={<Account/>}>
-        </Route>
-        <Route path="/cash" element={<Cash/>}>
-        </Route>
-        <Route path="/messages" element={<Messages/>}>
-        </Route>
-        <Route path="/news" element={<News/>}>
-        </Route>
-        <Route path="/portfolio" element={<Portfolio/>}>
-        </Route>
-        <Route path="/stockTracker" element={<StockTracker/>}>
-        </Route>
-        <Route path="*" element={<Navigate replace to="/home" />} />
+        {/* <Route path="/" element={<Header/>}> */}
+          <Route path="/home" element={<Home/>}/>
+          
+          <Route path="/profile" element={<Profile />} />
+          
+          <Route path="/account" element={<Account />} />
+          
+          <Route path="/cash" element={<Cash />} />
+          
+          <Route path="/messages" element={<Messages />} />
+          
+          <Route path="/news" element={<News />} />
+          
+          <Route path="/portfolio" element={<Portfolio />} />
+          
+          <Route path="/stockTracker" element={<StockTracker />} />
+          
+          <Route path="*" element={<Navigate replace to="/home" />} />
+        
+        {/* </Route> */}
       </Routes>
       {/* </Router> */}
     </>

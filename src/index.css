@@ -173,3 +173,19 @@ opacity:1;
 
 }
 
+.border-gradient {
+  border: 1px solid;
+  border-radius:5px;
+  border-image-slice: 10;
+}
+.outermost-border-gradient{
+  border-image-source: linear-gradient(
+    to top,
+    rgb(243, 112, 182) ,
+    rgb(219, 173, 241) ,
+    rgb(132, 236, 198) ,
+    rgb(243, 243, 112) ,
+    rgb(132, 236, 198) ,
+    rgb(184, 173, 241) ,
+    rgb(132, 213, 236) 
+  )}

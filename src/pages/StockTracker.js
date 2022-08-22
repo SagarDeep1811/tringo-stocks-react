@@ -144,7 +144,7 @@ const newDate = new Date(differenceOfTimeStamps);
     chart:{
         height:58 + '%',
       width: 900,
-        backgroundColor:"#42494D"
+        backgroundColor:"black"
     },
     title: {
       text: stockSymbolForTitle,
@@ -376,7 +376,7 @@ align-items: start;
 justify-content:flex-start;
 gap:10px;
 width:100%;
-margin-top:55px;
+margin-top:5px;
 `;
 
 
@@ -497,9 +497,9 @@ const LineChartContainer = styled.div`
   flex-direction:row;
   justify-content: center;
   align-items: center; */
-  border: 1px solid #42494D;
+  /* border: 1px solid #42494D;
   border-radius: 5px;
-  background-color: #42494D;
+  background-color: #42494D; */
   /* height:500px; */
   /* height:1000px; */
 `;

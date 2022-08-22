@@ -21,8 +21,10 @@ import { StockContext } from "../context/StockContext";
 Highcharts.theme = {
     colors: ['#058DC7', 'rgb(255, 204, 153)', '#00ff99', '#6AF9C4',  '#64E572',
              '#FF9655', '#FFF263', '#DDDF00'],
-    chart: {
-        backgroundColor:" #42494D"
+  chart: {
+    height:58 + '%',
+    width: 1000,
+      backgroundColor:"black"
     },
     title: {
         style: {
@@ -171,7 +173,7 @@ function LineGraph() {
         chart:{
             height:50 + '%',
             width: 800,
-            // backgroundColor:""
+            backgroundColor:"black"
         },
         plotOptions: {
             series: {
@@ -249,7 +251,7 @@ function LineGraph() {
               enabled:true,
             },
             scrollbar: {
-                enabled: true,
+                enabled: false,
                 showFull: false
             }
           },
@@ -264,7 +266,10 @@ function LineGraph() {
             },
             gridLineWidth:0,
             
-        }],  
+        }], 
+        exporting: {
+          enabled: false
+      }, 
     tooltip: {
         shared:true
       },
@@ -290,10 +295,6 @@ function LineGraph() {
             },
         
       };
-
-    
-
-  
   return (
       <LineGraphContainer>
         <HighchartsReact highcharts={Highcharts} options={options} />
