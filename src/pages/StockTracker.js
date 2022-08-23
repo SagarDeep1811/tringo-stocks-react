@@ -353,7 +353,7 @@ const newDate = new Date(differenceOfTimeStamps);
 
         <SubmitButtonContainer>
 
-            <p>Plot</p>
+            {/* <p>Plot</p> */}
             <button type="submit" onClick={plotTheChart}>
               PLOT
             </button>
@@ -409,7 +409,7 @@ const StockSymbolInputFieldContainer = styled.div`
   opacity:0.6;
 }
 >input[type=text]{
-  width:145px;
+  width:150px;
   border:black 1px solid;
   height:25px;
   background-color:rgb(96, 94, 94);
@@ -424,6 +424,7 @@ const StockSymbolInputFieldContainer = styled.div`
 `;
 
 const SubmitButtonContainer = styled.div`
+margin-top:20px;
 >p{
   color:white;
   opacity:0.6;
@@ -457,7 +458,7 @@ const ResolutionContainer = styled.div`
   color:white;
   opacity:0.6;}
   >select{
-    width:145px;
+    width:150px;
   border:black 1px solid;
   height:25px;
   background-color:rgb(96, 94, 94);

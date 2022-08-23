@@ -69,6 +69,14 @@ function Header() {
             Sign-Out
           </Link></span>
         
+          <span buttonColor = {buttonComponentBackgroundColor}  onClick={changeButtonComponentColor("4")}>
+          <Link
+            style={{ textDecoration: "none",color:"white"}}
+            to="/sign-up"
+          >
+            Sign-Up
+          </Link></span>
+        
       </MenuItems>
       <ThemesContainer>
         {/* <LightModeOutlinedIcon />
