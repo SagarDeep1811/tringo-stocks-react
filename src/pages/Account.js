@@ -6,11 +6,8 @@ function Account() {
   console.log("Account");
   return (
     <AccountContainer>
-      <h1>Account</h1>
-      &nbsp;
-      <Link style={{ textDecoration: "none", color: "white" }} to="/home">
-         Back to Home 
-      </Link>
+
+      
     </AccountContainer>
   )
 }
@@ -18,10 +15,11 @@ function Account() {
 export default Account;
 
 const AccountContainer = styled.div`
->h1{
-  color:yellow;
-}
-background-color:black;
 margin-top:50px;
-position:fixed;
+display:flex;
+flex-flow:row nowrap;
+justify-content:center;
+align-items:flex-start;
+gap:40px;
 `;
+

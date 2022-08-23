@@ -19,7 +19,7 @@ function Header() {
   }
 
   return (
-    <HeaderContainer>
+    <HeaderContainer className="border-gradient outermost-border-gradient">
       <MenuItems >
           <span buttonColor={buttonComponentBackgroundColor} onClick={changeButtonComponentColor("0")}>
           <Link
@@ -53,18 +53,27 @@ function Header() {
           >
             News
           </Link></span>
-          <span buttonColor = {buttonComponentBackgroundColor}  onClick={changeButtonComponentColor("4")}>
+          {/* <span buttonColor = {buttonComponentBackgroundColor}  onClick={changeButtonComponentColor("4")}>
           <Link
             style={{ textDecoration: "none",color:"white"}}
             to="/account"
           >
             Account
+          </Link></span> */}
+        
+          <span buttonColor = {buttonComponentBackgroundColor}  onClick={changeButtonComponentColor("4")}>
+          <Link
+            style={{ textDecoration: "underline",color:"white"}}
+            to="/sign-in"
+          >
+            Sign-Out
           </Link></span>
+        
       </MenuItems>
       <ThemesContainer>
         {/* <LightModeOutlinedIcon />
         <DarkModeOutlinedIcon /> */}
-        <p className="border-gradient outermost-border-gradient">tringo</p>
+        <p>tringo</p>
       </ThemesContainer>
       <Outlet/>
     </HeaderContainer>
@@ -82,7 +91,7 @@ const HeaderContainer = styled.div`
   /* border-bottom: 1px solid var(--shallow-black); */
   width: 100%;
   margin:-15px 0 0 0;
-  padding:0 0 -10px 0;
+  padding:0 0 -100px 0;
   > .MuiSvgIcon-root {
     color: black;
     border: 1px solid black;
@@ -105,11 +114,11 @@ const MenuItems = styled.div`
   justify-content: space-around;
   align-items: center;
   gap: 30px;
-  margin-right: 20px;
+  /* margin-right: 20px; */
   >span{
     color: var(--header-text-color);
     padding:5px 10px 5px 10px;
-    border:1px solid black;
+    border:1px solid -var(shallow-black);
     border-radius:5px;
     background-color: transparent;
     opacity:0.6;
@@ -150,11 +159,13 @@ const ThemesContainer = styled.div`
     font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size:20px;
     padding:2px;
-    background: -webkit-linear-gradient(
+    /* background: -webkit-linear-gradient(
     rgb(243, 112, 182) ,
     rgb(219, 173, 241) ,
     rgb(132, 236, 198) ,
-    rgb(243, 243, 112) );
+    rgb(243, 243, 112) ); */
+    
+  background: -webkit-linear-gradient(0deg, white, pink , purple, violet);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }

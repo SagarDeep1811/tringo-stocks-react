@@ -331,7 +331,7 @@ const newDate = new Date(differenceOfTimeStamps);
             <p>Stock Symbol</p>
             <input
               type="text"
-              placeholder="Stock symbol ..."
+              placeholder="..."
               onChange={handleStockSymbol}
             ></input>
          </StockSymbolInputFieldContainer>
@@ -415,9 +415,9 @@ const StockSymbolInputFieldContainer = styled.div`
   background-color:rgb(96, 94, 94);
   color:white;
   opacity:0.7;
+  text-align:center;
 }
 >input[type=text]:focus{
-  border:none;
   outline: none;
   opacity:1;
 }

@@ -15,6 +15,8 @@ import Messages from "./pages/Messages";
 import News from "./pages/news/News";
 import Portfolio from "./pages/Portfolio";
 import StockTracker from "./pages/StockTracker.js";
+import Registration from "./pages/SignUp";
+import LogIn from "./pages/SignIn";
 
 function App() {
   console.log(process.env);
@@ -51,6 +53,10 @@ function App() {
           
           <Route path="/stockTracker" element={<StockTracker />} />
           
+          <Route path="sign-up" element={<Registration />} />
+        
+          <Route path="sign-in" element={<LogIn/>} />
+
           <Route path="*" element={<Navigate replace to="/home" />} />
         
         {/* </Route> */}
