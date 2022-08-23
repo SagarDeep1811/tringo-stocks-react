@@ -21,7 +21,7 @@ function Header() {
   return (
     <HeaderContainer className="border-gradient outermost-border-gradient">
       <MenuItems >
-          <span buttonColor={buttonComponentBackgroundColor} onClick={changeButtonComponentColor("0")}>
+          <span className="signOut-border-gradient outermost-border-gradient" buttonColor={buttonComponentBackgroundColor} onClick={changeButtonComponentColor("0")}>
           <Link
             style={{ textDecoration: "none", color:"white"
           }}
@@ -30,7 +30,7 @@ function Header() {
             Home
           </Link>
         </span>
-          <span buttonColor = {buttonComponentBackgroundColor} onClick={changeButtonComponentColor("1")}>
+          <span className="signOut-border-gradient outermost-border-gradient" buttonColor = {buttonComponentBackgroundColor} onClick={changeButtonComponentColor("1")}>
           <Link
             style={{ textDecoration: "none", color:"white"
           }}
@@ -46,7 +46,7 @@ function Header() {
           >
             Profile
           </Link></span> */}
-          <span  buttonColor = {buttonComponentBackgroundColor} onClick={changeButtonComponentColor("3")}>
+          <span className="signOut-border-gradient outermost-border-gradient" buttonColor = {buttonComponentBackgroundColor} onClick={changeButtonComponentColor("3")}>
           <Link
             style={{ textDecoration: "none", color:"white",border:"1px solid --var(shallow-black)" , borderRadius:"2px" , padding:"2px"}}
             to="/news"
@@ -63,7 +63,7 @@ function Header() {
         
           <span buttonColor = {buttonComponentBackgroundColor}  onClick={changeButtonComponentColor("4")}>
           <Link
-            style={{ textDecoration: "underline",color:"white"}}
+            style={{ textDecoration: "none",color:"white"}}
             to="/sign-in"
           >
             Sign-Out
@@ -91,7 +91,7 @@ const HeaderContainer = styled.div`
   /* border-bottom: 1px solid var(--shallow-black); */
   width: 100%;
   margin:-15px 0 0 0;
-  padding:0 0 -100px 0;
+  padding:0 0 0 0;
   > .MuiSvgIcon-root {
     color: black;
     border: 1px solid black;
@@ -117,7 +117,7 @@ const MenuItems = styled.div`
   /* margin-right: 20px; */
   >span{
     color: var(--header-text-color);
-    padding:5px 10px 5px 10px;
+    padding:2px 10px 2px 10px;
     border:1px solid -var(shallow-black);
     border-radius:5px;
     background-color: transparent;

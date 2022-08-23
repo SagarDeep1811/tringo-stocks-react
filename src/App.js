@@ -53,9 +53,9 @@ function App() {
           
           <Route path="/stockTracker" element={<StockTracker />} />
           
-          <Route path="sign-up" element={<Registration />} />
+          <Route path="/sign-up" element={<Registration />} />
         
-          <Route path="sign-in" element={<LogIn/>} />
+          <Route path="/sign-in" element={<LogIn/>} />
 
           <Route path="*" element={<Navigate replace to="/home" />} />
         
