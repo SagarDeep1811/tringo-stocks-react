@@ -19,7 +19,6 @@ import Registration from "./pages/SignUp";
 import LogIn from "./pages/SignIn";
 
 function App() {
-  console.log(process.env);
   const theme = createTheme({
     palette: {
       mode: "dark",

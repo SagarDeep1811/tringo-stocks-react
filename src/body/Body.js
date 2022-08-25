@@ -2,11 +2,9 @@ import React from "react";
 import NewsFeed from "./NewsFeed";
 import Stats from "./Stats";
 import styled from "styled-components";
-import StockContextProvider from "../context/StockContext";
 
 function Body() {
   return (
-    <StockContextProvider>
       <BodyContainer>
         <NewsFeedContainer>
           <NewsFeed />
@@ -15,7 +13,6 @@ function Body() {
           <Stats />
         </StatsContainer>
       </BodyContainer>
-    </StockContextProvider>
   );
 }
 

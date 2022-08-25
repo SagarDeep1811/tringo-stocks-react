@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
+// Firebase stuff---------------------------------------
 import { StockContext } from "../context/StockContext";
-import {db} from '../firebase';
+import { db } from '../firebase';
+import {collection,getDocs,addDoc,updateDoc,deleteDoc,doc,
+} from "firebase/firestore";
+
+
 import styled from 'styled-components'
 import axios from "axios";
 import StatsRow from "./StatsRow";
@@ -8,9 +13,6 @@ import IconButton from '@mui/material/IconButton';
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 import Highcharts from "highcharts/highstock";
 import HC_exporting from 'highcharts/modules/exporting';
-
-import {collection,getDocs,addDoc,updateDoc,deleteDoc,doc,
-} from "firebase/firestore";
 
 Highcharts.theme = {
   colors: ['#058DC7', 'rgb(255, 204, 153)', '#00ff99', '#6AF9C4',  '#64E572',

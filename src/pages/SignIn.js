@@ -1,33 +1,77 @@
-import React from 'react'
+import React, {useState , useEffect , useContext} from 'react'
 import styled from "styled-components";
-import {Link} from "react-router-dom";
-
+import {Link , useNavigate} from "react-router-dom";
+import { StockContext } from "../context/StockContext";
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from "../firebase";
 function SignIn() {
+  // const {email , password , setEmail , setPassword} = useContext(StockContext);
+  let navigate = useNavigate();
+
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+
+  const logIn = async () => {
+    try {
+      const userLoggedIn = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
+      console.log("userLoggedIn : " , userLoggedIn);
+    }
+    catch (error)
+    {
+      console.log(error.message);
+    }
+    setLoginEmail("");
+    setLoginPassword("");
+    navigate("/home");
+  }
+ 
+  const handleEmail = (e) => {
+    e.preventDefault();
+    const val = e.target.value;
+    setLoginEmail(val);
+  }
+  const handlePassword = (e) => {
+    e.preventDefault();
+    const val = e.target.value;
+    setLoginPassword(val);
+  }
+
     return (
       <SignInContainer>
     <LoginContainer>
     <h3>Log-In</h3>
         <InputFieldContainer>
-            <p>Username</p>
+            <p>E-mail</p>
             <input
-            type="text"
+            type="email"
             placeholder="..."
+            onChange={handleEmail}
+            value={loginEmail}
+            name="email"
+            required
             ></input>
         </InputFieldContainer>
 
         <InputFieldContainer>
             <p>Password</p>
             <input
-            type="text"
-            placeholder="..."
+            type="password"
+              placeholder="..."
+              onChange={handlePassword}
+              value={loginPassword}
+              name="password"
+              required
             ></input>
         </InputFieldContainer>
 
         <SubmitButtonContainer>
-            <button type="submit">
+            <button type="submit" onClick={logIn}>
             Sign-In
             </button>
         </SubmitButtonContainer>
+          
+        <p>New to Tringo ? <span className="border-gradient outermost-border-gradient"><Link style={{ textDecoration: "none", color: "white", border: "1px solid --var(shallow-black)", borderRadius: "2px", padding: "2px" }} to="/sign-up">Sign-Up</Link></span></p>
+          
         </LoginContainer>
     </SignInContainer>
   )
@@ -74,7 +118,7 @@ const InputFieldContainer = styled.div`
   opacity:0.6;
   /* text-align:center; */
 }
->input[type=text]{
+>input[type=email]{
   width:195px;
   border:black 1px solid;
   border-radius:3px;
@@ -84,7 +128,21 @@ const InputFieldContainer = styled.div`
   opacity:0.7;
   text-align:center;
 }
->input[type=text]:focus{
+>input[type=email]:focus{
+  outline: none;
+  opacity:1;
+}
+>input[type=password]{
+  width:195px;
+  border:black 1px solid;
+  border-radius:3px;
+  height:25px;
+  background-color:rgb(96, 94, 94);
+  color:white;
+  opacity:0.7;
+  text-align:center;
+}
+>input[type=password]:focus{
   outline: none;
   opacity:1;
 }
@@ -97,7 +155,7 @@ const SubmitButtonContainer = styled.div`
 }
   >Button{
   background-color:black;
-  width:195px;
+  width:200px;
   cursor:pointer;
   height:25px;
   text-align: center;

@@ -1,9 +1,29 @@
 import React,{useState ,useEffect} from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link,useNavigate  } from "react-router-dom";
 import { Outlet } from "react-router-dom";
+import { onAuthStateChanged,signOut } from 'firebase/auth';
+import { auth } from "../firebase";
+import BoltIcon from '@mui/icons-material/Bolt';
 
 function Header() {
+  const [username, setUsername] = useState("tepez1000");
+  // onAuthStateChanged(auth, (currentUser) => {
+  //   setUsername(currentUser.email);
+  // })
+
+  let navigate = useNavigate();
+
+  const logOut = async () => {
+    const userLoggedOut = await signOut(auth);
+    console.log("userLoggedOut : ", userLoggedOut);
+  }
+
+  const handleLogOut = (e) => {
+    e.preventDefault();
+    logOut();
+    navigate("/sign-in");
+  }
 
   const [buttonComponentBackgroundColor, setButtonComponentBackgroundColor] = useState({ "0": false, "1": false, "2": false, "3": false, "4": false });
   
@@ -19,7 +39,8 @@ function Header() {
   }
 
   return (
-    <HeaderContainer className="border-gradient outermost-border-gradient">
+    <HeaderContainer>
+      {/* className="border-gradient outermost-border-gradient" */}
       <MenuItems >
           <span className="signOut-border-gradient outermost-border-gradient" buttonColor={buttonComponentBackgroundColor} onClick={changeButtonComponentColor("0")}>
           <Link
@@ -61,27 +82,29 @@ function Header() {
             Account
           </Link></span> */}
         
-          <span buttonColor = {buttonComponentBackgroundColor}  onClick={changeButtonComponentColor("4")}>
-          <Link
-            style={{ textDecoration: "none",color:"white"}}
-            to="/sign-in"
+          <button
+            style={{color:"white"}}
+          to="/sign-in"
+          onClick={handleLogOut}
           >
             Sign-Out
-          </Link></span>
-        
+          </button>
+{/*         
           <span buttonColor = {buttonComponentBackgroundColor}  onClick={changeButtonComponentColor("4")}>
           <Link
             style={{ textDecoration: "none",color:"white"}}
             to="/sign-up"
           >
             Sign-Up
-          </Link></span>
+          </Link></span> */}
         
       </MenuItems>
       <ThemesContainer>
         {/* <LightModeOutlinedIcon />
         <DarkModeOutlinedIcon /> */}
-        <p>tringo</p>
+        <h4>tringo</h4>
+        <BoltIcon/>
+        <p className="signOut-border-gradient outermost-border-gradient">{username}</p>
       </ThemesContainer>
       <Outlet/>
     </HeaderContainer>
@@ -122,7 +145,6 @@ const MenuItems = styled.div`
   justify-content: space-around;
   align-items: center;
   gap: 30px;
-  /* margin-right: 20px; */
   >span{
     color: var(--header-text-color);
     padding:2px 10px 2px 10px;
@@ -133,6 +155,19 @@ const MenuItems = styled.div`
    } 
   > span:hover{
     background-color: var(--header-hover-background-color);
+    /* transition: 0.5s; */
+    opacity:1;
+    cursor:pointer;
+  }
+  >button{
+    color: var(--header-text-color);
+    background-color: transparent;
+    opacity:0.6;
+    border:none;
+    font-size: 14px;
+   } 
+  > button:hover{
+    /* background-color: var(--header-hover-background-color); */
     /* transition: 0.5s; */
     opacity:1;
     cursor:pointer;
@@ -156,26 +191,31 @@ const MenuItems = styled.div`
 // `;
 
 const ThemesContainer = styled.div`
-  /* border:1px black solid;
-  border-radius:5px;
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-around;
   align-items: center;
-  gap: 5px; */
-  >p{
+  gap: 5px;
+  > .MuiSvgIcon-root {
+    color:yellow;
+  }
+  >h4{
     font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size:20px;
     padding:2px;
-    /* background: -webkit-linear-gradient(
-    rgb(243, 112, 182) ,
-    rgb(219, 173, 241) ,
-    rgb(132, 236, 198) ,
-    rgb(243, 243, 112) ); */
-    
-  background: -webkit-linear-gradient(0deg, white, pink , purple, violet);
+    background: -webkit-linear-gradient(0deg, white, pink , purple, violet);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+  >p{
+    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size:12px;
+    padding:2px;
+    color:white;
+    /* background: -webkit-linear-gradient(0deg, white, grey , black);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    border:1px white solid;
+    border-radius:10px; */
   }
   margin-right: 20px;
   

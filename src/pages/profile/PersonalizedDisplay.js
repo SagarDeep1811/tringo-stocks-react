@@ -2,7 +2,6 @@ import React,{useContext} from 'react';
 import styled from "styled-components";
 import profile_photo from "./pics/profile_photo.jpg";
 import { StockContext } from "../../context/StockContext.js";
-import { db } from '../../firebase';
 import {collection,getDocs,addDoc,updateDoc,deleteDoc,doc,
 } from "firebase/firestore";
 
