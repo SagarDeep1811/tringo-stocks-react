@@ -1,26 +1,30 @@
-import React,{useState ,useEffect} from "react";
+import React,{useState ,useEffect , useContext} from "react";
 import styled from "styled-components";
 import { Link,useNavigate  } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import { onAuthStateChanged,signOut } from 'firebase/auth';
 import { auth } from "../firebase";
 import BoltIcon from '@mui/icons-material/Bolt';
+import { StockContext } from "../context/StockContext";
 
 function Header() {
-  const [username, setUsername] = useState("tepez1000");
-  // onAuthStateChanged(auth, (currentUser) => {
-  //   setUsername(currentUser.email);
-  // })
+  const { currentUserUid, setCurrentUserUid ,username, setUsername } = useContext(StockContext);
+  onAuthStateChanged(auth, (currentUser) => {
+    setUsername(currentUser.email);
+  setUsername(currentUser.email.slice(0,currentUser.email.indexOf("@")));
+  })
 
   let navigate = useNavigate();
 
   const logOut = async () => {
     const userLoggedOut = await signOut(auth);
     console.log("userLoggedOut : ", userLoggedOut);
+    setUsername("tepez1000");
   }
 
   const handleLogOut = (e) => {
     e.preventDefault();
+    setCurrentUserUid("myStocks");
     logOut();
     navigate("/sign-in");
   }
@@ -103,7 +107,7 @@ function Header() {
         {/* <LightModeOutlinedIcon />
         <DarkModeOutlinedIcon /> */}
         <h4>tringo</h4>
-        <BoltIcon/>
+        <BoltIcon />
         <p className="signOut-border-gradient outermost-border-gradient">{username}</p>
       </ThemesContainer>
       <Outlet/>
@@ -151,7 +155,7 @@ const MenuItems = styled.div`
     border:1px solid -var(shallow-black);
     border-radius:5px;
     background-color: transparent;
-    opacity:0.6;
+    opacity:0.8;
    } 
   > span:hover{
     background-color: var(--header-hover-background-color);
@@ -195,9 +199,7 @@ const ThemesContainer = styled.div`
   flex-flow: row nowrap;
   align-items: center;
   gap: 5px;
-  > .MuiSvgIcon-root {
-    color:yellow;
-  }
+  
   >h4{
     font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size:20px;
@@ -209,21 +211,20 @@ const ThemesContainer = styled.div`
   >p{
     font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size:12px;
+    font-weight:normal;
     padding:2px;
-    color:white;
-    /* background: -webkit-linear-gradient(0deg, white, grey , black);
+    background: -webkit-linear-gradient(0deg, white,#5df0ba, #5db8f0 );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    border:1px white solid;
-    border-radius:10px; */
   }
   margin-right: 20px;
   
   > .MuiSvgIcon-root {
-    color: white;
+    color: yellow;
     padding:5px;
     border-radius:5px;
     opacity:0.7;
+    
   }
   
   > .MuiSvgIcon-root:hover{

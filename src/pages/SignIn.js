@@ -5,7 +5,7 @@ import { StockContext } from "../context/StockContext";
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from "../firebase";
 function SignIn() {
-  // const {email , password , setEmail , setPassword} = useContext(StockContext);
+  const { currentUserUid, setCurrentUserUid } = useContext(StockContext);
   let navigate = useNavigate();
 
   const [loginEmail, setLoginEmail] = useState("");
@@ -15,6 +15,7 @@ function SignIn() {
     try {
       const userLoggedIn = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
       console.log("userLoggedIn : " , userLoggedIn);
+      setCurrentUserUid(userLoggedIn.user.uid);
     }
     catch (error)
     {

@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { StockContext } from "../context/StockContext";
 import { auth } from "../firebase";
-import {collection,getDocs,addDoc,updateDoc,deleteDoc,doc,
+import {collection,setDoc,getDocs,addDoc,updateDoc,deleteDoc,doc,
 } from "firebase/firestore";
 import {db} from '../firebase';
 
@@ -38,19 +38,26 @@ function SignUp() {
     {
       try {
         const user = await createUserWithEmailAndPassword(auth, registrationEmail, registrationPassword);
-        // const newFirestoreDb = await 
         console.log("user : " , user);
         console.log("user.user.uid : ", user.user.uid);
         setCurrentUserUid(user.user.uid);
       }
       catch (error)
       {
-        // if (error.message == "Firebase: Error (auth/email-already-in-use).")
-        // {
-        //   setAlreadyInUseWarning("block");
-        // }
         console.log(error.message);
       }
+      // await setDoc(doc(db, currentUserUid , db.createId()), {
+      //   name: "Los Angeles",
+      //   state: "CA",
+      //   country: "USA"
+      // });
+      // const docRef = doc(db, "users", currentUserUid);
+      // const colRef = collection(docRef, "stocksInfo").
+      // addDoc(colRef, {
+      // price: priceId,
+      // and: two,
+      // more: pairs,
+      // });
       setUnmatchedPasswordWarning("none");
       setAlreadyInUseWarning("none");
     }

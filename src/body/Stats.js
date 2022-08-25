@@ -50,18 +50,18 @@ HC_exporting(Highcharts);
 const testData = []; 
 
 function Stats() {
-  const {stockForNewsFeed , setStockForNewsFeed , sharesForNewsFeed, setSharesForNewsFeed , closingPriceForNewsFeed, setClosingPriceForNewsFeed , percentageForNewsFeed, setPercentageForNewsFeed,allStocksSymbols, setAllStocksSymbols} = useContext(StockContext);
+  const {stockForNewsFeed , setStockForNewsFeed , sharesForNewsFeed, setSharesForNewsFeed , closingPriceForNewsFeed, setClosingPriceForNewsFeed , percentageForNewsFeed, setPercentageForNewsFeed,allStocksSymbols, setAllStocksSymbols,currentUserUid, setCurrentUserUid} = useContext(StockContext);
 
   const TOKEN  = process.env.REACT_APP_FINNHUB_API_KEY;
   const BASE_URL = process.env.REACT_APP_FINNHUB_QUOTE_URL;
-
+  console.log("currentUserUid : ", currentUserUid);
 // API call--
   const [displayState, setDisplayState] = useState("flex");
 const [stocksData, setStocksData] = useState([]);
 const [myStocks, setMyStocks] = useState([]);
 const [newStockSymbol, setNewStockSymbol] = useState("");
 const [sharesForNewStock, setSharesForNewStock] = useState("");
-const usersCollectionRef = collection(db, "myStocks");
+const usersCollectionRef = collection(db, currentUserUid);
   
   const handleDisplayAttribute = () => {
     if (displayState == "flex")
@@ -85,7 +85,7 @@ const getStocksData = (stock)=>{
 
 const getMyStocks = () => {
   db
-  .collection('myStocks')
+  .collection(currentUserUid)
   .onSnapshot(snapshot => 
     {
       let promises = [];
