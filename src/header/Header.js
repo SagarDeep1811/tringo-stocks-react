@@ -10,8 +10,8 @@ import { StockContext } from "../context/StockContext";
 function Header() {
   const { currentUserUid, setCurrentUserUid ,username, setUsername } = useContext(StockContext);
   onAuthStateChanged(auth, (currentUser) => {
-    setUsername(currentUser.email);
-  setUsername(currentUser.email.slice(0,currentUser.email.indexOf("@")));
+    // setUsername(currentUser.email);
+  setUsername(currentUser?currentUser.email.slice(0,currentUser.email.indexOf("@")):"tepez1000");
   })
 
   let navigate = useNavigate();

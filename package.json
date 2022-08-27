@@ -2,7 +2,7 @@
   "name": "stockmarket",
   "version": "0.1.0",
   "private": false,
-  "homepage": "https://SagarDeep1811.github.io",
+  "homepage": "https://SagarDeep1811.github.io/tringo-stocks-react",
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",

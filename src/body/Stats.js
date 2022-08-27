@@ -4,8 +4,6 @@ import { StockContext } from "../context/StockContext";
 import { db } from '../firebase';
 import {collection,getDocs,addDoc,updateDoc,deleteDoc,doc,
 } from "firebase/firestore";
-
-
 import styled from 'styled-components'
 import axios from "axios";
 import StatsRow from "./StatsRow";
